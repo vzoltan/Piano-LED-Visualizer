@@ -1,0 +1,12 @@
+[Unit]
+Description=PianoLED
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=sudo /bin/sh -c 'HOME=/home/pi /usr/bin/python /home/pi/Piano-LED-Visualizer/visualizer.py'
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target

@@ -202,6 +202,16 @@
 			<Reset_to_default_settings text="Cancel"></Reset_to_default_settings>		
 		</Other_Settings>
 	</menu>
+
+
+        <menu text="Export MIDI">
+                <Export_MIDI text="Confirm"></Export_MIDI>
+        </menu>
+        <menu text="Import MIDI">
+                <Import_MIDI text="Confirm"></Import_MIDI>
+        </menu>
+
+
 	<menu text="Shutdown Options">
 		<Shutdown_Options text="Shutdown">
 			<Shutdown text="Confirm"></Shutdown>

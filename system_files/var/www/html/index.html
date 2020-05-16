@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <div id="controller" class="controller"></div>
+    <div id="content" class="content"></div>
+    <div id="action" class="action"></div>
+    <script>
+        function loadPage(e, divId, page) {
+            if (e) e.preventDefault();
+            var con = document.getElementById(divId);
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function (e) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    con.innerHTML = xhr.responseText;
+                }
+            }
+
+            xhr.open("GET", page, true);
+            xhr.setRequestHeader('Content-type', 'text/html');
+            xhr.send();
+        }
+    </script>
+    <script>
+        loadPage(event, 'content','content.php')
+        loadPage(event, 'controller','controller.html')
+    </script>
+    <!--a href="#" onclick="loadPage(event, 'content','content.php')"> HOME </!--a>
+</body>
+
+</html>

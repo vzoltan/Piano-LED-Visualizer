@@ -1,0 +1,77 @@
+<?php
+echo "List of the files <br /><br /> ";
+$path = "/home/pi/Piano-LED-Visualizer/Songs";
+$dh = opendir($path);
+$i=1;
+
+if(isset($_GET['stop'])){
+  shell_exec("sudo /var/www/html/killpm.sh");
+}
+
+if(isset($_GET['reboot'])){
+  shell_exec("sudo reboot");
+}
+
+if(isset($_GET['pianoled'])){
+  shell_exec("sudo service ledpiano resatrt");
+}
+
+if(isset($_GET['btmidi'])){
+  shell_exec("sudo service btmidi restart");
+}
+
+
+if(isset($_GET['submit'])){
+
+//filenametest
+//shell_exec("sudo touch /home/pi/".$_GET['submit']);
+
+$output = shell_exec("sudo /var/www/html/pm2.sh \"".$_GET['submit']."\"");
+
+//From prompt this command works: sudo -E /usr/bin/python /home/pi/Piano-LED-Visualizer/playmidi.py '/home/pi/Piano-LED-Visualizer/Songs/Everyday.mid' 'Roland Digital Piano:Roland Digital Piano MIDI 1 20:0'
+//shell_exec("sudo -E /usr/bin/python /home/pi/Piano-LED-Visualizer/playmidi.py '/home/pi/Piano-LED-Visualizer/Songs/".$_GET['submit']."' 'Roland Digital Piano:Roland Digital Piano MIDI 1 20:0'");
+//shell_exec("sudo -E /usr/bin/python /home/pi/Piano-LED-Visualizer/playmidi.py '/home/pi/Piano-LED-Visualizer/Songs/Everyday.mid' 'Roland Digital Piano:Roland Digital Piano MIDI 1 20:0'");
+//$output = shell_exec("sudo -E /usr/bin/python /home/pi/Piano-LED-Visualizer/playmidi.py '/home/pi/Piano-LED-Visualizer/Songs/Everyday.mid' 'Roland Digital Piano:Roland Digital Piano MIDI 1 20:0'");
+//shell_exec("sudo /bin/sh -c HOME=/home/pi /usr/bin/python /home/pi/Piano-LED-Visualizer/playmidi.py '/home/pi/Piano-LED-Visualizer/Songs/".$_GET['submit']."' 'Roland Digital Piano:Roland Digital Piano MIDI 1 20:0'");
+//shell_exec("sudo /bin/sh -c 'HOME=/home/pi /usr/bin/python /home/pi/Piano-LED-Visualizer/playmidi.py '/home/pi/Piano-LED-Visualizer/Songs/Everyday.mid' 'Roland Digital Piano:Roland Digital Piano MIDI 1 20:0'");
+
+}
+echo "<html><head><title>Play MIDI</title></head><body>";
+
+echo "<style> .stop{    height:50px;    width:267px; color:red;} </style>";
+echo "<style> .big{   font-size:50px;  color:red;} </style>";
+echo "<form method='get' action='index.php'>";
+echo "<input type='submit' name='stop' value='STOP' class='stop'>";
+echo "<br />";
+echo "<input type='submit' name='reboot' value='Reboot'>";
+echo "<input type='submit' name='pianoled' value='Rstart Visualizer'>";
+echo "<input type='submit' name='btmidi' value='Reset BtMIDI'>";
+echo "</form>";
+       echo "<br />";
+
+
+echo "<a href='index.php' class='big' >home</a><br /><br />";
+
+
+
+//while (($file = readdir($dh)) !== false) {
+$files = scandir($path);
+sort($files);
+foreach ($files as $file) {
+
+    if($file != "." && $file != ".." && $file != "index.php" && $file != ".htaccess" && $file != "error_log" && $file != "cgi-bin" && $file !="MIDI") {
+
+echo "<form method='get' action='index.php'>";
+        echo "<input type='submit' name='submit' value='$file')>";
+echo "</form>";
+
+//echo "<a href='$path/$file'>$file</a><br /><br />";
+
+//        echo "<br />";
+        $i++;
+    }
+}
+
+echo "</body></html>";
+closedir($dh);
+?>
