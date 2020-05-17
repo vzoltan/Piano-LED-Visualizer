@@ -27,7 +27,7 @@ if (isset($_GET['author'])){
         }
     }
 }else{
-    $content = "Authors:<BR/>";
+    $content = "List of composers and performers:<BR/>";
     $files_lower = array_map( 'strtolower', $files );
     sort($files_lower);
     $prev="-";

@@ -1,5 +1,5 @@
 <settings>
-	<brightness_percent>1</brightness_percent>
+	<brightness_percent>5</brightness_percent>
 	<background_color>BLACK</background_color>
 	<text_color>WHITE</text_color>
 	
@@ -8,11 +8,11 @@
 	<green>0</green>
 	<blue>0</blue>
 	
-	<fadingspeed>1</fadingspeed>
-	<color_mode>Speed</color_mode>
+	<fadingspeed>10</fadingspeed>
+	<color_mode>Rainbow</color_mode>
 	
-	<rainbow_offset>0</rainbow_offset>
-	<rainbow_scale>100</rainbow_scale>
+	<rainbow_offset>-15</rainbow_offset>
+	<rainbow_scale>30</rainbow_scale>
 	<rainbow_timeshift>0</rainbow_timeshift>
 	
 	<multicolor>[]</multicolor>	
