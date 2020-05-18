@@ -16,7 +16,18 @@
                 break; 
             case "play":
                 shell_exec("sudo /var/www/html/pm.sh \"".$_GET['song']."\""); 
+		$output = shell_exec('ps aux | grep playmidi.py | grep -v grep');
+		echo "<pre>$output</pre>";
                 break;
+		case "whatsplaying":
+		$output = shell_exec('ps aux | grep playmidi.py | grep -v grep');
+                echo "<pre>$output</pre>";
+                break;
+                case "time":
+                $output = shell_exec('cat /var/www/html/time.txt');
+                echo "<pre>$output</pre>";
+                break;
+
         }
     }
 ?>

@@ -23,6 +23,11 @@
         <input type='button' name='reboot' value='Reboot' class='reboot' onclick="loadPage(event, 'action','action.php?action=reboot')">
         <input type='button' name='pianoled' value='Restart Visualizer' class='pianoled' onclick="loadPage(event, 'action','action.php?action=pianoled')">
         <input type='button' name='btmidi' value='Reset BtMIDI' class='btmidi' onclick="loadPage(event, 'action','action.php?action=btmidi')">
-    <br />
-    <a href='#' class='big' onclick="loadPage(event, 'content','content.php')">home</a><br /><br />
-    <input type='text' id='search' autocomplete="off" oninput="loadPage(event, 'content','content.php?search='+document.getElementById('search').value)"/>
+   <br />
+	<input type='button' name='whatsplaying' value='What is playing' class='whatsplaying' onclick="loadPage(event, 'action','action.php?action=whatsplaying')">
+   <br />
+        <input type='button' name='time' value='Timing' class='time' onclick="loadPage(event, 'action','action.php?action=time')">
+   <br />
+	<a href='#' class='big' onclick="loadPage(event, 'content','content.php')">home</a><br /><br />
+   <br />
+	<input type='text' id='search' autocomplete="off" oninput="loadPage(event, 'content','content.php?search='+document.getElementById('search').value)"/>
